@@ -6,6 +6,7 @@ C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\bac
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\backend.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\backend.pdb
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Humanizer.dll
+C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
@@ -23,6 +24,12 @@ C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Mic
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\MySqlConnector.dll
@@ -36,6 +43,7 @@ C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\Sys
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\System.Composition.Hosting.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\System.Composition.Runtime.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\System.Composition.TypedParts.dll
+C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
@@ -95,6 +103,7 @@ C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\obj\Debug\net8.0\bac
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\obj\Debug\net8.0\backend.csproj.CoreCompileInputs.cache
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\obj\Debug\net8.0\backend.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\obj\Debug\net8.0\backend.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\obj\Debug\net8.0\backend.sourcelink.json
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\edgar\OneDrive\Stalinis kompiuteris\casino\backend\obj\Debug\net8.0\staticwebassets\msbuild.backend.Microsoft.AspNetCore.StaticWebAssets.props

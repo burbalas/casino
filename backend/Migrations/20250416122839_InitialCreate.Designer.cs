@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Casino.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250319095630_InitialCreate")]
+    [Migration("20250416122839_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

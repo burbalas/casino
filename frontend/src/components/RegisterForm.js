@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 
 function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -39,6 +40,7 @@ function RegisterForm() {
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
+        
         <input
           name="username"
           type="text"
@@ -64,6 +66,12 @@ function RegisterForm() {
           required
         /><br />
         <button type="submit">Register</button>
+
+            {/* 🔙 back */}
+        <p>
+          <Link to="/login">login</Link>
+        </p>
+
       </form>
       {message && <p>{message}</p>}
     </div>
