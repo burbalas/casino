@@ -2873,11 +2873,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\edgar\\OneDrive\\Stalinis kompiuteris\\casino\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\edgar\\Documents\\GitHub\\casino\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\edgar\\OneDrive\\Stalinis kompiuteris\\casino\\backend\\backend.csproj",
+      "projectPath": "C:\\Users\\edgar\\Documents\\GitHub\\casino\\backend\\backend.csproj",
       "packagesPath": "C:\\Users\\edgar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\edgar\\OneDrive\\Stalinis kompiuteris\\casino\\backend\\obj\\",
+      "outputPath": "C:\\Users\\edgar\\Documents\\GitHub\\casino\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\edgar\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -2903,7 +2903,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -2961,7 +2962,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
