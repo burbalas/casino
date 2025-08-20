@@ -1,7 +1,7 @@
-// src/components/LoginForm.js
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import * as api from '../lib/api';
 
 export default function LoginForm() {
   const [form, setForm] = useState({ username: '', password: '' });
@@ -11,31 +11,22 @@ export default function LoginForm() {
 
   const submit = async (e) => {
     e.preventDefault();
-    const res = await fetch('http://localhost:5000/api/users/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form)
-    });
-
-    if (res.ok) {
-      const { token } = await res.json();
+    setMsg('');
+    try {
+      const { token } = await api.login(form.username.trim(), form.password);
       login(token);
       nav('/lobby');
-    } else setMsg('Login failed');
+    } catch (err) {
+      setMsg(err.message || 'Login failed');
+    }
   };
 
-  const handle = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
-
   return (
-    
-    
-
     <div style={{ textAlign: 'center', marginTop: 50 }}>
       <h2>Login</h2>
       <form onSubmit={submit}>
-        <input name="username" onChange={handle} value={form.username} placeholder="Username" required/><br/>
-        <input name="password" type="password" onChange={handle} value={form.password} placeholder="Password" required/><br/>
+        <input name="username" onChange={(e)=>setForm(f=>({...f,username:e.target.value}))} value={form.username} placeholder="Username" required/><br/>
+        <input name="password" type="password" onChange={(e)=>setForm(f=>({...f,password:e.target.value}))} value={form.password} placeholder="Password" required/><br/>
         <button>Login</button>
       </form>
       {msg && <p>{msg}</p>}

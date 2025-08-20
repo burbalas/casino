@@ -1,38 +1,25 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import * as api from '../lib/api';
 
-function RegisterForm() {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
-  });
+export default function RegisterForm() {
+  const [formData, setFormData] = useState({ username: '', email: '', password: '' });
   const [message, setMessage] = useState('');
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const nav = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMessage('');
     try {
-      const response = await fetch('http://localhost:5000/api/Users/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-      if (response.ok) {
-        const data = await response.json();
-        setMessage(`User registered successfully! Your ID is: ${data.userId}`);
-      } else {
-        setMessage('Registration failed.');
-      }
-    } catch (error) {
-      console.error('Error during registration:', error);
-      setMessage('An error occurreddddd.');
+      const { userId } = await api.register(
+        formData.username.trim(),
+        formData.email.trim().toLowerCase(),
+        formData.password
+      );
+      setMessage(`User registered! ID: ${userId}`);
+      setTimeout(()=>nav('/login'), 800);
+    } catch (err) {
+      setMessage(err.message || 'Registration failed.');
     }
   };
 
@@ -40,42 +27,16 @@ function RegisterForm() {
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
-        
-        <input
-          name="username"
-          type="text"
-          placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
-          required
-        /><br />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        /><br />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        /><br />
+        <input name="username" placeholder="Username" value={formData.username}
+               onChange={(e)=>setFormData(s=>({...s,[e.target.name]:e.target.value}))} required /><br />
+        <input name="email" type="email" placeholder="Email" value={formData.email}
+               onChange={(e)=>setFormData(s=>({...s,[e.target.name]:e.target.value}))} required /><br />
+        <input name="password" type="password" placeholder="Password" value={formData.password}
+               onChange={(e)=>setFormData(s=>({...s,[e.target.name]:e.target.value}))} required /><br />
         <button type="submit">Register</button>
-
-            {/* 🔙 back */}
-        <p>
-          <Link to="/login">login</Link>
-        </p>
-
+        <p><Link to="/login">login</Link></p>
       </form>
       {message && <p>{message}</p>}
     </div>
   );
 }
-
-export default RegisterForm;
