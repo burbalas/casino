@@ -1,51 +1,73 @@
-// Program.cs  (or Startup.cs for older template)
-
-// ───────────────────────────────────────────── using
+// Program.cs
 using System.Text;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Casino.Data;
+using Casino.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1️⃣  Add controllers
+// Controllers + Swagger (dev)
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-// 2️⃣  CORS policy : allow React dev server
+// CORS from config
+var allowed = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() 
+              ?? new[] { "http://localhost:5173", "http://localhost:3000" };
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("AllowFrontend", p =>
-        p.WithOrigins("http://localhost:3000")
+        p.WithOrigins(allowed)
          .AllowAnyHeader()
          .AllowAnyMethod());
 });
 
-// 3️⃣  DbContext (MySQL via Pomelo)
+// DbContext (MySQL via Pomelo)
 var cs = builder.Configuration.GetConnectionString("DefaultConnection")!;
 builder.Services.AddDbContext<ApplicationDbContext>(o =>
     o.UseMySql(cs, ServerVersion.AutoDetect(cs)));
 
-// 4️⃣  JWT auth  (already configured earlier)
-builder.Services.AddAuthentication("Bearer")
-       .AddJwtBearer("Bearer", o =>
-       {
-           var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!);
-           o.TokenValidationParameters = new TokenValidationParameters
-           {
-               ValidateIssuer           = true,
-               ValidIssuer              = builder.Configuration["Jwt:Issuer"],
-               ValidateAudience         = false,
-               IssuerSigningKey         = new SymmetricSecurityKey(key)
-           };
-       });
+// Password hasher
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+
+// JWT auth
+var jwtKey    = builder.Configuration["Jwt:Key"]    ?? throw new("Jwt:Key missing");
+var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "CasinoApi";
+
+builder.Services
+    .AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme    = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer           = true,
+            ValidIssuer              = jwtIssuer,
+            ValidateAudience         = false,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey         = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+            ValidateLifetime         = true,
+            ClockSkew                = TimeSpan.Zero
+        };
+    });
 
 var app = builder.Build();
 
-// 5️⃣  **CORS MUST BE FIRST**  (before https redirection!)
-app.UseCors("AllowFrontend");
+// Swagger only in Dev
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
-// — Optional, only if you really need https during dev —
-// app.UseHttpsRedirection();
+// CORS must be early
+app.UseCors("AllowFrontend");
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -1,0 +1,83 @@
+/* Header can stay as-is */
+.lobby__header {
+  /* your existing styles */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px;
+}
+
+/* Brand strip: fixed height so layout doesn't change */
+/* Brand container stays the same size, so layout doesn't move */
+.brand {
+  position: relative;
+  height: 34px;              /* your header row height */
+  padding: 6px 12px;         /* keep your current padding if you like */
+  display: flex;
+  align-items: flex-start;    /* top-align inside the brand */
+  /* default nudges (tweak per page if needed) */
+  --logo-h: 300px;
+  --logo-x: -40px;            /* left nudge  (negative = more left) */
+  --logo-y: -50px;            /* up nudge    (negative = more up)   */
+}
+
+.brand__logo {
+  height: var(--logo-h);
+  width: auto;
+  display: block;
+  object-fit: contain;
+  object-position: left top;
+  transform: translate(var(--logo-x), var(--logo-y));
+}
+
+/* Right-side user controls */
+.lobby__right {
+  /* Tweak these in JSX to resize/move */
+  --size: 1rem;      /* text size (1rem ≈ 16px) */
+  --x: 0px;          /* left/right nudge (negative = left) */
+  --y: 0px;          /* up/down nudge (negative = up) */
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--size);
+  transform: translate(var(--x), var(--y));
+}
+
+/* Make the token count stand out */
+.userline { font-weight: 700; letter-spacing: .2px; }
+.userline .gold { color: #ffd35c; text-shadow: 0 1px 0 #8f6a24; }
+
+/* Scale the button with the text size */
+/* Ghost button base (works for <button> and <Link>) */
+.btn-ghost,
+.btn-ghost:link,
+.btn-ghost:visited {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 8px;
+  background: transparent;              /* ghost */
+  color: #fff;
+  text-decoration: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+/* Hover/focus states */
+.btn-ghost:hover,
+.btn-ghost:focus {
+  background: rgba(255,255,255,0.10);
+}
+
+/* If something still overrides background (e.g., a global .button rule) */
+.lobby__right .btn-ghost {
+  background: transparent !important;   /* last resort override */
+}
+
+/* Optional: scale with the size vars you added earlier */
+.lobby__right .btn-ghost {
+  font-size: calc(var(--size, 1rem) * 0.95);
+  padding: calc(var(--size, 1rem) * 0.6) calc(var(--size, 1rem) * 1.0);
+  border-radius: 10px;
+}
