@@ -81,7 +81,7 @@ export default function GameLobby() {
           style={{
             '--size': '1.25rem',   // bigger text/buttons (try 1.1–1.4rem)
             '--x': '-8px',         // move a bit left  (e.g., '12px' to the right)
-            '--y': '50px',         // move a bit up    (e.g., '6px' down)
+            '--y': '30px',         // move a bit up    (e.g., '6px' down)
           }}
         >
           {isLoggedIn ? (
